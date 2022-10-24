@@ -3,6 +3,7 @@ pipeline{
     tools{
         maven 'maven'
     }
+    stages{
         stage("Tesing with mvn"){
             steps{
                 script{
