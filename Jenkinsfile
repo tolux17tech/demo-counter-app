@@ -62,7 +62,7 @@ pipeline{
             steps{
                 script{
                     sh "docker build . -t $JOB_NAME:v1.$BUILD_ID"
-                    sh "docker tag $JOB_NAME:v1.$BUILD_ID tolux17/$JOB_NAME:v1.$BUILD_ID"
+                    sh "docker tag $JOB_NAME:v1.$BUILD_ID tolux17tech/$JOB_NAME:v1.$BUILD_ID"
                 }
             }
         }
@@ -71,7 +71,7 @@ pipeline{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                     sh "echo $PASS |docker login -u $USER --password-stdin"
-                    sh "docker push tolux17/$JOB_NAME:v1.$BUILD_ID"
+                    sh "docker push tolux17tech/$JOB_NAME:v1.$BUILD_ID"
                    }
                 }
             }
@@ -81,7 +81,7 @@ pipeline{
                 script{
                     echo "coming soon"
                    
-                    sh "docker run -d -p9090:9099 tolux17/$JOB_NAME:v1.$BUILD_ID"
+                    sh "docker run -d -p9090:9099 tolux17tech/$JOB_NAME:v1.$BUILD_ID"
                 }
             }
         }
