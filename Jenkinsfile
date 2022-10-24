@@ -39,7 +39,7 @@ pipeline{
                 script{
                     def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    def nexusRepo = readMavenPom.version.endswith("SNAPSHOT") ? "tesla-land-snapshot" : "tesla-land-release"
+                    def nexusRepo = readPom.version.endswith("SNAPSHOT") ? "tesla-land-snapshot" : "tesla-land-release"
                     nexusArtifactUploader artifacts: 
                     [
                         [
