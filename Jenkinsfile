@@ -39,7 +39,7 @@ pipeline{
                 script{
                     def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    def nexusRepo = readPom.version.endswith("SNAPSHOT") ? "tesla-land-snapshot" : "tesla-land-release"
+                    def nexusRepo = readMavenPom.version.endswith("SNAPSHOT") ? "tesla-land-snapshot" : "tesla-land-release"
                     nexusArtifactUploader artifacts: 
                     [
                         [
@@ -54,6 +54,33 @@ pipeline{
                             protocol: 'http', 
                             repository: nexusRepo, 
                             version: "${readPomVersion.version}"
+                }
+            }
+        }
+
+        stage("docker build"){
+            steps{
+                script{
+                    sh "docker build . -t tolux17/webapp:uber"
+                }
+            }
+        }
+        stage("docker push") {
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    sh "echo $PASS |docker login -u $USER --password-stdin"
+                    sh "docker push tolux17/webapp:uber"
+                   }
+                }
+            }
+        }
+        stage("docker run"){
+            steps{
+                script{
+                    echo "coming soon"
+                   
+                    sh "docker run -d -p9090:9090 --name maven-app tolux17/webapp:uber"
                 }
             }
         }
