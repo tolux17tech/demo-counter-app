@@ -37,7 +37,7 @@ pipeline{
         stage("Upload jar to nexus"){
             steps{
                 script{
-                    nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/uber.jar', type: 'jar']], credentialsId: 'e161dcd8-ce01-45f9-b023-efc0ea5b6a58', groupId: 'com.example', nexusUrl: '10.0.0.168:4000', nexusVersion: 'nexus3', protocol: 'http', repository: 'tesla-land-release', version: '1.0.0'
+                    nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'e161dcd8-ce01-45f9-b023-efc0ea5b6a58', groupId: 'com.example', nexusUrl: '10.0.0.168:4000', nexusVersion: 'nexus3', protocol: 'http', repository: 'tesla-land-release', version: '1.0.0'
                 }
             }
         }
