@@ -14,14 +14,16 @@ pipeline{
         stage("Building war"){
             steps{
                 script{
-                    sh "mvn package"
+                    sh "mvn clean package"
                 }
             }
         }
         stage("Testing with sonar"){
             steps{
                 script{
+                    withSonarQubeEnv(credentialsId: 'sonarqubeconfigured') {
                     sh "mvn sonar:sonar"
+                    }
                 }
             }
         }
