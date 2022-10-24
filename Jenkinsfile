@@ -27,6 +27,13 @@ pipeline{
                 }
             }
         }
+        stage ("Sonarqube quality gate status"){
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonarqubeconfigured'
+                }
+            }
+        }
         stage("Pushing to nexus"){
             steps{
                 script{
