@@ -80,7 +80,7 @@ pipeline{
                 script{
                     echo "coming soon"
                    
-                    sh "docker run -d -p9090:9090 --name maven-app tolux17/webapp:uber"
+                    sh "docker run -d -p9090:9090  tolux17/webapp:uber"
                 }
             }
         }
