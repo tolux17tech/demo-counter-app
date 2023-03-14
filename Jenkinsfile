@@ -55,7 +55,7 @@ pipeline{
                         [
                             artifactId: "${readPomVersion.artifactId}", 
                         classifier: '', 
-                        file: 'target/"${readPomVersion.finalName}".jar', 
+                        file: 'target/Uber.jar', 
                         type: 'jar']
                         ], 
                         credentialsId: 'Nexus2-login', 
