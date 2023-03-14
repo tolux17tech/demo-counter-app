@@ -49,7 +49,7 @@ pipeline{
                 script{
                     nexusArtifactUploader artifacts: [
                         [
-                            artifactId: 'springboot', 
+                            artifactId: 'com.example', 
                         classifier: '', 
                         file: 'target/Uber.jar', 
                         type: 'jar']
