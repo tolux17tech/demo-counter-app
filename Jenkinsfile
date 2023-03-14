@@ -22,5 +22,18 @@ pipeline{
                 sh 'mvn verify -DskipUnitTests'
             }
         }
+
+        stage("Build Artifact"){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+        stage("Static Code analysis"){
+            steps{
+            withSonarQubeEnv(credentialsId: 'sonar-api-key') {
+                sh "mvn sonar:sonar"
+               }
+            }
+        }
     }
 }
