@@ -78,5 +78,17 @@ pipeline{
                 }
             }
         }
+
+        stage("Push Image to DockerHub"){
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'docker_token', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                    sh "docker push tolux17tech/$JOB_NAME:v1.$BUILD_ID"
+                    sh "docker tolux17tech/$JOB_NAME:latest"
+                 }
+              }
+            }
+        }
     }
 }
