@@ -64,25 +64,25 @@ pipeline{
                 }
             }
         }
-        stage ("Upload snapshot file to nexus"){
-            steps{
-                script{
-                    nexusArtifactUploader artifacts: [
-                        [
-                            artifactId: 'springboot', 
-                        classifier: '', 
-                        file: 'target/Uber.jar', 
-                        type: 'jar']
-                        ], 
-                        credentialsId: 'Nexus2-login', 
-                        groupId: 'com.example', 
-                        nexusUrl: '172.21.0.4:8081', 
-                        nexusVersion: 'nexus2', 
-                        protocol: 'http', 
-                        repository: 'counter-app-snapshot', 
-                        version: '1.0.0'
-                }
-            }
-        }
+        // stage ("Upload snapshot file to nexus"){
+        //     steps{
+        //         script{
+        //             nexusArtifactUploader artifacts: [
+        //                 [
+        //                     artifactId: 'springboot', 
+        //                 classifier: '', 
+        //                 file: 'target/Uber.jar', 
+        //                 type: 'jar']
+        //                 ], 
+        //                 credentialsId: 'Nexus2-login', 
+        //                 groupId: 'com.example', 
+        //                 nexusUrl: '172.21.0.4:8081', 
+        //                 nexusVersion: 'nexus2', 
+        //                 protocol: 'http', 
+        //                 repository: 'counter-app-snapshot', 
+        //                 version: '1.0.0'
+        //         }
+        //     }
+        // }
     }
 }
