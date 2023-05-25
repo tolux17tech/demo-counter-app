@@ -61,7 +61,7 @@ pipeline{
                     nexusArtifactUploader artifacts: [
                         [artifactId: "${readPomVersion.artifactId}", 
                         classifier: '', 
-                        file: 'target/${plugin.configuration.finalName}.jar', 
+                        file: 'target/${readPomVersion.plugin.configuration.finalName}.jar', 
                         type: 'jar']
                     ], 
                     credentialsId: 'nexus-info', 
