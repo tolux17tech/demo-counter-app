@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools{
+        maven maven
+    }
     stages{
         stage('Git Checkout from SCM'){
             steps{
@@ -9,4 +12,11 @@ pipeline{
             }
         }
     }
+    stage('Maven Unit Test'){
+            steps{
+                script{
+                  sh 'mvn test'
+                }
+            }
+        }
 }
