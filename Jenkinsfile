@@ -59,13 +59,11 @@ pipeline{
 
                     def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "demo-app-release-snapshot" : "demo-app-release"
 
-                    def xml = new XmlSlurper().parse('pom.xml')
-                    def finalName = xml.build.plugins.plugin.find { it.executions.execution.configuration.finalName }.executions.execution.configuration.finalName.text()
-
+                    
                     nexusArtifactUploader artifacts: [
                         [artifactId: "${readPomVersion.artifactId}", 
                         classifier: '', 
-                        file: 'target/${finalName}.jar', 
+                        file: 'target/Uber.jar', 
                         type: 'jar']
                     ], 
                     credentialsId: 'nexus-info', 
