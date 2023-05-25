@@ -26,5 +26,12 @@ pipeline{
                 }
             }
           }
+        stage('Maven build artifacts'){
+            steps{
+                script{
+                    sh 'mvn clean install'
+                }
+            }
+        }
         }
     }
