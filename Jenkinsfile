@@ -33,13 +33,13 @@ pipeline{
                 }
             }
           }
-        // stage('Sonarqube Static Code Analysis'){
-        //     steps{
-        //         script{
-        //             withSonarQubeEnv(credentials: "sonarqube_server_token")
-        //             sh "mvn sonar:sonar"
-        //         }
-        //     }
-        //   }
+        stage('Sonarqube Static Code Analysis'){
+            steps{
+                script{
+                    withSonarQubeEnv(credentialsId: "sonarqube_server_token")
+                    sh "mvn sonar:sonar"
+                }
+            }
+          }
         }
     }
