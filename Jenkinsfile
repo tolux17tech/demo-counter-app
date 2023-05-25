@@ -61,7 +61,7 @@ pipeline{
                     nexusArtifactUploader artifacts: [
                         [artifactId: "${readPomVersion.artifactId}", 
                         classifier: '', 
-                        file: 'target/Uber.jar', 
+                        file: 'target/${plugin.configuration.finalName}.jar', 
                         type: 'jar']
                     ], 
                     credentialsId: 'nexus-info', 
