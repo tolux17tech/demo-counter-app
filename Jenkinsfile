@@ -43,5 +43,13 @@ pipeline{
                 }
             }
           }
+
+        stage('Sonarqube Quality Gate Status'){
+            steps{
+                script{
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube_server_token'
+                }
+            }
+          }
         }
     }
