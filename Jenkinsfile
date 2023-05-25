@@ -17,10 +17,10 @@ pipeline{
                 script{
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-auth', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                    sh "docker build -t $BUILD_TAG:v1.$BUILD_ID ." 
-                    sh "docker tag $BUILD_TAG:v1.$BUILD_ID tolux17tech/$BUILD_TAG:v1.$BUILD_ID"
+                    sh "docker build -t counter_v1.$BUILD_ID ." 
+                    sh "docker tag counter_v1.$BUILD_ID tolux17tech/counter_v1.$BUILD_ID"
                     sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh "docker push tolux17tech/$BUILD_TAG:v1.$BUILD_ID"
+                    sh "docker push tolux17tech/counter_v1.$BUILD_ID"
                     }
                   
                 }
